@@ -21,7 +21,7 @@ class OpenAI {
       });
       return response.data.choices[0].message;
     } catch (e) {
-      console.log("Error while gpt chat", e.message);
+      console.log("Error while gpt chat: ", e.message);
     }
   }
   async transcription(filepath) {
@@ -32,7 +32,7 @@ class OpenAI {
       );
       return response.data.text;
     } catch (e) {
-      console.log("Error while transcription", e.message);
+      console.log("Error while transcription: ", e.message);
     }
   }
 }

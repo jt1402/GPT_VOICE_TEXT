@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon ./src/main.js",
-    "start": "cross-env NODE_ENV=production node ./src/main.js"
+    "dev": "nodemon ./src/main.js",
+    "start": "node ./src/main.js"
   },
   "author": "",
   "license": "ISC",

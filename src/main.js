@@ -13,14 +13,23 @@ const INITIAL_SESSION = {
   messages: [],
 };
 
+bot.command("help", async (ctx) => {
+  ctx.session = INITIAL_SESSION;
+  await ctx.reply(
+    " - Interact with the bot using text messages or by sending voice messages.\n - For text-based chat, simply type your message and press Enter.\n - To send a voice message, click the microphone icon in the Telegram chat input area and speak your message.\n - The bot will respond accordingly to your messages, providing engaging and human-like responses.\n - To start a new session, use the /new command.\n - For instructions, use the /help command."
+  );
+});
+
 bot.command("new", async (ctx) => {
   ctx.session = INITIAL_SESSION;
-  await ctx.reply("Waiting for your voice or text message");
+  await ctx.reply("New session created. Waiting for your message...");
 });
 
 bot.command("start", async (ctx) => {
   ctx.session = INITIAL_SESSION;
-  await ctx.reply("Waiting for your voice or text message");
+  await ctx.reply(
+    "Introducing  JT's GPT bot! 🤖✨\n📱 Send  messages to chat with the bot.\n💬 Get interactive and engaging responses.\n🤝 Enjoy a human-like conversation experience.\nGet started now! 🚀"
+  );
 });
 
 bot.on(message("voice"), async (ctx) => {
@@ -35,14 +44,14 @@ bot.on(message("voice"), async (ctx) => {
       );
       return;
     }
-    await ctx.reply(code("Waiting for the answer from server side..."));
+    await ctx.reply(code("Awaiting server response..."));
     const link = await ctx.telegram.getFileLink(ctx.message.voice.file_id);
 
     const oggPath = await ogg.create(link.href, userId);
     const mp3Path = await ogg.toMp3(oggPath, userId);
 
     const text = await openai.transcription(mp3Path);
-    await ctx.reply(code(`Your promt:  ${text}`));
+    await ctx.reply(code(`Provided response:  ${text}`));
 
     ctx.session.messages.push({ role: openai.roles.USER, content: text });
     const response = await openai.chat(ctx.session.messages);
@@ -53,7 +62,7 @@ bot.on(message("voice"), async (ctx) => {
 
     await ctx.reply(response.content);
   } catch (error) {
-    console.log("Error while listening", error.message);
+    console.log("Error while listening: ", error.message);
   }
 });
 
@@ -70,7 +79,7 @@ bot.on(message("text"), async (ctx) => {
       );
       return;
     }
-    await ctx.reply(code("Waiting for the answer from server side..."));
+    await ctx.reply(code("Awaiting server response..."));
     ctx.session.messages.push({
       role: openai.roles.USER,
       content: ctx.message.text,
@@ -83,7 +92,7 @@ bot.on(message("text"), async (ctx) => {
 
     await ctx.reply(response.content);
   } catch (error) {
-    console.log("Error while listening", error.message);
+    console.log("Error while listening: ", error.message);
   }
 });
 bot.launch();
