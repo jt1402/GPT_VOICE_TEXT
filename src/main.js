@@ -73,7 +73,7 @@ bot.on(message("text"), async (ctx) => {
     const userId = String(ctx.message.from.id);
 
     // Add the user authorization validation
-    if (userId !== "964403295") {
+    if (userId !== <USERID>) {
       await ctx.reply(
         "Sorry, you are not authorized to use this bot. hahah)) Get fucked"
       );
