@@ -15,7 +15,7 @@ This Telegram bot is built using Node.js and integrates OpenAI's ChatGPT API and
 
 To use this bot, you will need the following:
 
-- Node.js (version X.X.X or higher)
+- Node.js (version 14.21.3 or higher)
 - Telegram Bot API Token
 - OpenAI GPT API Key
 - OpenAI Voice Recognition API Key
