@@ -23,8 +23,8 @@ To use this bot, you will need the following:
 
 ## Usage
 
-— Start a conversation with the bot on Telegram.
-— You can interact with the bot using text messages or by sending voice messages.
-— For text-based chat, simply type your message and press Enter.
-— To send a voice message, click the microphone icon in the Telegram chat input area and speak your message.
-— The bot will respond accordingly to your messages, providing engaging and human-like responses.
+- Start a conversation with the bot on Telegram.
+- Interact with the bot using text messages or by sending voice messages.
+- For text-based chat, simply type your message and press Enter.
+- To send a voice message, click the microphone icon in the Telegram chat input area and speak your message.
+- The bot will respond accordingly to your messages, providing engaging and human-like responses.
